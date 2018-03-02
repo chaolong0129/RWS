@@ -1,0 +1,13 @@
+﻿@model List<Portal.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var product in Model)
+{
+<p>@product.ID</p>
+    <p>@product.Name</p>
+    <p>@product.Price</p>
+}
