@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Operation\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
