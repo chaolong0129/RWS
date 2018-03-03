@@ -10,15 +10,11 @@ namespace Portal.Controllers
     {
         private IOperationTransient _operationTransient { get; set; }
         private IOperationScoped _operationScoped { get; set; }
-        private IOperationSingleton _operationSingleton { get;  set; }
-        private IOperationSingleton _operationSingletonInstance { get;  set; }
+        private IOperationSingleton _operationSingleton { get; set; }
+        private IOperationSingleton _operationSingletonInstance { get; set; }
 
-        public OperationController(
-            IOperationTransient operationTransient,
-            IOperationScoped operationScoped,
-            IOperationSingleton operationSingleton,
-            IOperationSingleton operationSingletonInstance
-            )
+        public OperationController(IOperationTransient operationTransient, IOperationScoped operationScoped,
+                                    IOperationSingleton operationSingleton, IOperationSingleton operationSingletonInstance)
         {
             _operationTransient = operationTransient;
             _operationScoped = operationScoped;
