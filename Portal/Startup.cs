@@ -17,6 +17,7 @@ namespace Portal
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.RegisterOperationServices();
             services.AddMvc();
             // Add Autofac
