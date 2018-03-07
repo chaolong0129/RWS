@@ -33,6 +33,11 @@ namespace Portal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
+            }
+            else {
+                app.UseExceptionHandler("/Error");
             }
 
             app.UseMvc(routes =>
