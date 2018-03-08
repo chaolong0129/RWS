@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
@@ -17,6 +18,13 @@ namespace Portal
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            Contract.Ensures(Contract.Result<IServiceProvider>() != null);
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromSeconds(30);
+                options.Cookie.Name = ".Session";
+            });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMemoryCache();
             services.RegisterOperationServices();
             services.AddMvc();
@@ -40,6 +48,8 @@ namespace Portal
             else {
                 app.UseExceptionHandler("/Error");
             }
+
+            app.UseSession();
 
             app.UseStaticFiles();
 
