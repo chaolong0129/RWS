@@ -8,6 +8,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Portal
@@ -60,6 +61,10 @@ namespace Portal
             app.UseSession();
 
             app.UseStaticFiles();
+
+            var routeBuilder = new RouteBuilder(app);
+            routeBuilder.AddCustomRoute(app);
+            app.UseRouter(routeBuilder.Build());
 
             app.UseMvc(routes =>
             {
